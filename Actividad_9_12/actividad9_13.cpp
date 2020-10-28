@@ -1,13 +1,14 @@
 #include "rectangulo.h"
 #include <iostream>
 #include <stdexcept>
+using namespace std;
 
 Rectangulo::Rectangulo( Coordenadas2D _ladoIa, Coordenadas2D _ladoDa, Coordenadas2D _ladoIab, Coordenadas2D _ladoDab ) 
 {
     establecerRectangulo( _ladoIa, _ladoDa, _ladoIab, _ladoDab );
 }
 
-// SETTERS
+
 void Rectangulo::establecerRectangulo( Coordenadas2D _ladoIa, Coordenadas2D _ladoDa, Coordenadas2D _ladoIab, Coordenadas2D _ladoDab)
 {
     if (( _ladoIa.obtenerX() < 20.0f && _ladoIa.obtenerY() < 20.0f) && (_ladoDa.obtenerX() < 20.0f && _ladoDa.obtenerY() < 20.0f) && 
@@ -52,8 +53,22 @@ void Rectangulo::establecerRectangulo( Coordenadas2D _ladoIa, Coordenadas2D _lad
 {     
         return obtenerAnchura() * obtenerLongitud(); 
 }
-// check whether current object is rectangle
+ 
 bool Rectangulo::esRectangulo() 
 { 
     return obtenerAnchura() != obtenerLongitud(); 
+}
+
+int main(int argc, const char* argv[]) {
+    Coordenadas2D ab(2, 5;
+    Coordenadas2D cd(1, 10);
+    Coordenadas2D de(4, 20);
+    Coordenadas2D ef(20, 4);
+
+    Rectangulo g1(ab, cd, de, ef);
+
+    cout << "Anchura: " << g1.obtenerAnchura << "\nlongitud: " << g1.obtenerLongitud() << "\nArea: " << g1.obtenerArea() << "\nPerimetetro: " 
+         << g1.obtenerPerimetro() << std::endl;
+    
+    return 0;
 }
