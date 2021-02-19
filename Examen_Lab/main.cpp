@@ -5,7 +5,6 @@
 #include<stdio.h>
 #include<time.h>
 
-//Clase Resultados.  Administrador.
 using namespace std;
 
 class Resultados {
