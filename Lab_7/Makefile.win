@@ -1,0 +1,49 @@
+# Project: Proyect_7
+# Makefile created by Embarcadero Dev-C++ 6.3
+
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+OBJ      = main.o Nokemon.o Nokemo_Hierba.o Nokemon_Fuego.o Nokemon_Hielo.o Charamusco_Mon.o Ataque.o Aguacate_Mon.o
+LINKOBJ  = main.o Nokemon.o Nokemo_Hierba.o Nokemon_Fuego.o Nokemon_Hielo.o Charamusco_Mon.o Ataque.o Aguacate_Mon.o
+LIBS     = -L"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/lib" -L"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/x86_64-w64-mingw32/lib" -static-libgcc
+INCS     = -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/include" -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include"
+CXXINCS  = -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/include" -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include" -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++"
+BIN      = Proyect_7.exe
+CXXFLAGS = $(CXXINCS) 
+CFLAGS   = $(INCS) 
+DEL      = C:\Program Files (x86)\Embarcadero\Dev-Cpp\devcpp.exe INTERNAL_DEL
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${DEL} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+main.o: main.cpp
+	$(CPP) -c main.cpp -o main.o $(CXXFLAGS)
+
+Nokemon.o: Nokemon.cpp
+	$(CPP) -c Nokemon.cpp -o Nokemon.o $(CXXFLAGS)
+
+Nokemo_Hierba.o: Nokemo_Hierba.cpp
+	$(CPP) -c Nokemo_Hierba.cpp -o Nokemo_Hierba.o $(CXXFLAGS)
+
+Nokemon_Fuego.o: Nokemon_Fuego.cpp
+	$(CPP) -c Nokemon_Fuego.cpp -o Nokemon_Fuego.o $(CXXFLAGS)
+
+Nokemon_Hielo.o: Nokemon_Hielo.cpp
+	$(CPP) -c Nokemon_Hielo.cpp -o Nokemon_Hielo.o $(CXXFLAGS)
+
+Charamusco_Mon.o: Charamusco_Mon.cpp
+	$(CPP) -c Charamusco_Mon.cpp -o Charamusco_Mon.o $(CXXFLAGS)
+
+Ataque.o: Ataque.cpp
+	$(CPP) -c Ataque.cpp -o Ataque.o $(CXXFLAGS)
+
+Aguacate_Mon.o: Aguacate_Mon.cpp
+	$(CPP) -c Aguacate_Mon.cpp -o Aguacate_Mon.o $(CXXFLAGS)
