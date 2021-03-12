@@ -1,0 +1,49 @@
+# Project: Lab_8
+# Makefile created by Embarcadero Dev-C++ 6.3
+
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+OBJ      = Juego.o Jugador.o Jugador_Humano.o Jugador_Pc.o Movimiento.o Tablero.o Tablero_Ataque.o Tableros_Barcos.o
+LINKOBJ  = Juego.o Jugador.o Jugador_Humano.o Jugador_Pc.o Movimiento.o Tablero.o Tablero_Ataque.o Tableros_Barcos.o
+LIBS     = -L"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/lib" -L"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/x86_64-w64-mingw32/lib" -static-libgcc
+INCS     = -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/include" -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include"
+CXXINCS  = -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/include" -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include" -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++"
+BIN      = Lab_8.exe
+CXXFLAGS = $(CXXINCS) 
+CFLAGS   = $(INCS) 
+DEL      = C:\Program Files (x86)\Embarcadero\Dev-Cpp\DevCpp.exe INTERNAL_DEL
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${DEL} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+Juego.o: Juego.cpp
+	$(CPP) -c Juego.cpp -o Juego.o $(CXXFLAGS)
+
+Jugador.o: Jugador.cpp
+	$(CPP) -c Jugador.cpp -o Jugador.o $(CXXFLAGS)
+
+Jugador_Humano.o: Jugador_Humano.cpp
+	$(CPP) -c Jugador_Humano.cpp -o Jugador_Humano.o $(CXXFLAGS)
+
+Jugador_Pc.o: Jugador_Pc.cpp
+	$(CPP) -c Jugador_Pc.cpp -o Jugador_Pc.o $(CXXFLAGS)
+
+Movimiento.o: Movimiento.cpp
+	$(CPP) -c Movimiento.cpp -o Movimiento.o $(CXXFLAGS)
+
+Tablero.o: Tablero.cpp
+	$(CPP) -c Tablero.cpp -o Tablero.o $(CXXFLAGS)
+
+Tablero_Ataque.o: Tablero_Ataque.cpp
+	$(CPP) -c Tablero_Ataque.cpp -o Tablero_Ataque.o $(CXXFLAGS)
+
+Tableros_Barcos.o: Tableros_Barcos.cpp
+	$(CPP) -c Tableros_Barcos.cpp -o Tableros_Barcos.o $(CXXFLAGS)
