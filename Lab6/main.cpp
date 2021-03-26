@@ -1,8 +1,9 @@
 #include <iostream>
-using namespace std;
 #include "INTEGER.hpp"
 #include "CHAR.hpp"
 #include "STRING.hpp"
+
+using namespace std;
 int main(){
     STRING titulos;    
     STRING palabra;    
