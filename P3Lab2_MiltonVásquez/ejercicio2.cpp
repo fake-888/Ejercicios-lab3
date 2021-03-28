@@ -1,117 +1,169 @@
 #include <iostream>
+#include <time.h>
 #include <string>
+#include <random>
+
 using namespace std;
 
-void resolverCompuertas(string compuerta);
-void ordenar(int arreglo[], int inicio, int subIteracion, int menor, int indexMenor);
-void printArray(int arreglo[], int n);
-double sumatoria(int k, int n);
+void sumatoria_recu(int num, int i, double z) {
+	if (num>=i) {
+		double parte_arriba = 0;
+		double parte_abajo = 0;
+		double div = 0;
 
-int main(){
-    int opcion = 0;
-    do{
-        cout << "Menu:\n"
-             << "1)Compuertas Logicas Strings\n"
-             << "2)Ordenar Arreglo recursivo\n"
-             << "3)Sumatoria Recursiva\n"
-             << "4)Salir\n"
-             << "Ingrese opcion:";
-        cin >> opcion;
-        if (opcion == 1){
-            string cadena = "";
-            cout << "Ingrese la cadena: ";
-            cin >> cadena;
-            resolverCompuertas(cadena);
-        }
-        if (opcion == 2){
-            int arreglo[20];
-            srand(time(0));
-            for (int i = 0; i < 20; i++){
-                arreglo[i] = 1 + rand()%150;
-            }    
-            cout << "Arreglo Generado:"<<endl;
-            printArray(arreglo,20);    
-            cout << "----------------------------------------------------------------------"<<endl;
-            ordenar(arreglo, 0, 0, 500,0);
-        }
-        if (opcion == 3){
-            int n = 0;
-            while(n < 1){
-                cout << "Ingrese n:";                
-                cin >> n;
-            }            
-            cout << "-----------------------------------"<<endl;
-            cout << "S(" << n << ")" << "=" << sumatoria(n,n) << endl;
-            cout << "-----------------------------------"<<endl;
-        }
-    } while(opcion != 4);
+		parte_arriba = (2 * i) - 1;
+		parte_abajo = i * (i + 1);
+		div = (parte_arriba) / (parte_abajo);
+		z = z + div;
+		i++;
+		sumatoria_recu(num, i, z);
+	} else if (i >= num) {
+		cout << " Resp//  " << z << '\n';
+	}
 }
 
-void resolverCompuertas(string compuerta){
-    int primerBinario = compuerta[0] - '0';
-    int indexSegundoB = 3;
-    if (compuerta[1] == 'A'){
-        indexSegundoB = 4;
-    }
-    int segundoBinario = compuerta[indexSegundoB] - '0';
-    bool solucion = false;
-    int indexAcortar = 4;
-    if (compuerta[1] == 'A'){
-        indexAcortar = 5;
-        solucion = (primerBinario && segundoBinario);
-    } else {
-        solucion = (primerBinario || segundoBinario);
-    }
-    if (compuerta.length() == 4 || compuerta.length() == 5){
-        string salida = "false";
-        if (solucion){
-            salida = "true";
-        }
-        cout << "------------------------" << endl;
-        cout << "Solucion: "<< salida << endl;
-        cout << "------------------------" << endl;        
-    } else {       
-        string nuevaCompuerta = to_string((int)solucion) + compuerta.substr(indexAcortar);
-        resolverCompuertas(nuevaCompuerta);
-    }
+void orden_arre(int arr[], bool band, int tam) {
+
+	if (band ==true) {
+		int aus = 0;
+		band = false;
+		for (int j = 0; j < tam - 1; j++) {
+			if (arr[j] > arr[j + 1]) {
+				aus = arr[j];
+				arr[j] = arr[j + 1];
+				arr[j + 1] = aus;
+				band = true;
+			}
+		}
+		orden_arre(arr, band, tam);
+	} else {
+		for (int i = 0; i < tam; i++) {
+			cout << "{" << arr[i] << "}";
+		}
+	}
 }
 
-void ordenar(int arreglo[], int inicio, int subIteracion, int menor, int indexMenor){
-    if (inicio == 20){        
-        cout << "Arreglo Ordenado"<<endl;
-    }else{
-        if (subIteracion <= 19){
-            if (arreglo[subIteracion] < menor){
-                ordenar(arreglo, inicio, subIteracion + 1, arreglo[subIteracion], subIteracion);
-            } else {
-                ordenar(arreglo, inicio, subIteracion + 1, menor, indexMenor);
-            }
-            
-        }
-        if (inicio <= 19 && subIteracion == 20){
-            int temp = arreglo[inicio];
-            arreglo[inicio] = menor;
-            arreglo[indexMenor] = temp;
-            cout << "Iteracion "<< inicio + 1 << endl;            
-            printArray(arreglo,20);
-            cout << "----------------------------------------------------------------------"<<endl;
-            ordenar(arreglo, inicio + 1, inicio + 1, 500,0);
-        }
-    }
-}
+int main() {
+	cout<<'\n';
+	srand(time(NULL));
 
-void printArray(int arreglo[], int n){    
-    cout << "[ "; 
-    for (int i = 0; i < n; i++){
-        cout << arreglo[i] << " ";
-    }
-    cout << "]"<<endl;
-}
+	int opc = 1;
 
-double sumatoria(int k, int n){
-    if (k == 1){
-        return 0.5;
-    } else {
-        return ((double)(2*k - 1))/((double)(k*(k+1))) + sumatoria(k-1,n);
-    }
+	while (opc != 4) {
+		cout << "*******************BIENVENIDO**********************" << endl;
+		cout << "1. Ejercicio 1 Tabla" << endl;
+		cout << "2. Ejercicio 2 Ordenar Recursivo" << endl;
+		cout << "3. Ejercicio 3 Sumatoria Recursivo" << endl;
+		cout << "4. salir" << endl;
+		cout << "Ingrese la opcion que desea: " << endl;
+		cin >> opc;
+		switch (opc) {
+			case 2: {
+
+				int ar[20];
+				cout << "Desorde= ";
+				for (int i = 0; i < 20; i++) {
+					ar[i] = 1 + (rand() % 90);
+					cout << "[" << ar[i] << "]";
+				}
+
+				cout << '\n';
+
+				cout << "Orden=";
+				orden_arre(ar, true, 20);
+			}
+			break;
+
+			case 3: {
+
+				int uno = 0;
+				int dos = 1;
+				double resp = 0;
+
+				cout << "ponga el valor de x:";
+				cin >> uno;
+				while (uno <= 0) {
+					cout << "Ingrese un valor mayor que 0:";
+					cin >> uno;
+				}
+				sumatoria_recu(uno, dos, resp);
+			}
+
+			break;
+
+			case 1: {
+
+				cout << "Escriba la cadena: ";
+				string cadena;
+
+				cin >> cadena;
+				int res = 0;
+				int tam;
+				tam = cadena.length();
+
+				for (int i = 0; i < tam; i++) {
+					if (cadena[i] == 'A' && i == 1) {
+						res = 0;
+						if (cadena[i - 1] == '0' && cadena[i + 3] == '1') {
+							res = 0;
+						} else {
+							res = 1;
+						}
+						if (cadena[i - 1] == '0' && cadena[i + 3] == '0') {
+							res = 0;
+						} else {
+							res = 1;
+						}
+						if (cadena[i - 1] == '1' && cadena[i + 3] == '0') {
+							res = 0;
+						}
+
+						else {
+							res = 1;
+						}
+					} else if (cadena[i] == 'O' && i == 1) {
+						if (res == '0' && cadena[i + 2] == '0') {
+							res = 0;
+						} else {
+							res = 1;
+						}
+					} else if (cadena[i] == 'A') {
+
+						if (res == 1 && cadena[i + 3] == '0') {
+							res = 0;
+						} else {
+							res = 1;
+						}
+
+						if (res == 0 && cadena[i + 3] == '1') {
+							res = 0;
+						} else {
+							res = 1;
+						}
+
+						if (res == 0 && cadena[i + 3] == '0') {
+							res = 0;
+						} else {
+							res = 1;
+						}
+						if (cadena[i] == 'O') {
+							if (res == 0 && cadena[i + 2] == '0') {
+								res = 0;
+							} else {
+								res = 1;
+							}
+						}
+					}
+				}
+				if (res == 0) {
+					cout << "FALSO" << endl;
+				} else {
+					cout << "VERDADERO" << endl;
+				}
+
+				break;
+			}
+		}
+	}
+	return 0;
 }
